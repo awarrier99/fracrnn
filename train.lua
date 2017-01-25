@@ -330,7 +330,7 @@ for i = 1, iterations do
         if epoch >= opt.learning_rate_decay_after then
             local decay_factor = opt.learning_rate_decay
             optim_state.learningRate = optim_state.learningRate * decay_factor -- decay it
-            print('decayed learning rate by a factor ' .. decay_factor .. ' to ' .. optim_state.learningRate)
+            --print('decayed learning rate by a factor ' .. decay_factor .. ' to ' .. optim_state.learningRate)
         end
     end
 
@@ -340,7 +340,7 @@ for i = 1, iterations do
         local val_loss = eval_split(2) -- 2 = validation
         val_losses[i] = val_loss
 
-        local savefile = string.format('%s/lm_%s_epoch%.2f_%.4f.t7', opt.checkpoint_dir, opt.savefile, epoch, val_loss)
+        local savefile = string.format('%s/lm_epoch%0.2f.t7', opt.checkpoint_dir, epoch)
         print('saving checkpoint to ' .. savefile)
         local checkpoint = {}
         checkpoint.protos = protos
