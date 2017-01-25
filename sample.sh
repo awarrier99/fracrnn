@@ -1,1 +1,1 @@
-th sample.lua cv/lm_epoch400.00.t7 -gpuid -1
+th sample.lua cv/lm_epoch4000.00.t7 -gpuid -1

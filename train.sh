@@ -1,1 +1,1 @@
-th train.lua -gpuid -1 -data_dir data/ -rnn_size 12 -num_layers 1 -learning_rate 0.2 -learning_rate_decay_after 80 -max_epochs 400 -batch_size 5 -seq_length 30 -print_every 100 -eval_val_every 500 -checkpoint_dir cv/
+th train.lua -gpuid -1 -data_dir data/ -rnn_size 12 -num_layers 1 -learning_rate 0.2 -learning_rate_decay_after 80 -max_epochs 4000 -batch_size 5 -seq_length 30 -print_every 1000 -eval_val_every 4000 -checkpoint_dir cv/
