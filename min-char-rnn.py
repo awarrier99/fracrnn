@@ -6,9 +6,7 @@ import numpy as np
 import sys
 
 # data I/O
-<<<<<<< HEAD
-data = open("fractaldata.txt", 'r').read() # should be simple plain text file
-=======
+
 filep = sys.argv[1]
 data = open(filep, 'r').read() # should be simple plain text file
 print 'Reading from file ' + filep + '...'
