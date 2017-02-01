@@ -3,10 +3,18 @@ Minimal character-level Vanilla RNN model. Written by Andrej Karpathy (@karpathy
 BSD License
 """
 import numpy as np
+import sys
 
 # data I/O
+<<<<<<< HEAD
 data = open("fractaldata.txt", 'r').read() # should be simple plain text file
+=======
+filep = sys.argv[1]
+data = open(filep, 'r').read() # should be simple plain text file
+print 'Reading from file ' + filep + '...'
+>>>>>>> master
 chars = list(set(data))
+print chars
 data_size, vocab_size = len(data), len(chars)
 print 'data has %d characters, %d unique.' % (data_size, vocab_size)
 char_to_ix = { ch:i for i,ch in enumerate(chars) }
@@ -95,13 +103,20 @@ while True:
 
   # sample from the model now and then
   if n % 100 == 0:
-    sample_ix = sample(hprev, inputs[0], 200)
+    sample_ix = sample(hprev, inputs[0], 256)
     txt = ''.join(ix_to_char[ix] for ix in sample_ix)
     printfile = open('iter.txt','w')
     printfile.write(str('----\n %s \n----')) % (txt, )
     print '----\n %s \n----' % (txt, )
+<<<<<<< HEAD
     printfile.close()
     
+=======
+    x = raw_input('Save to file? (Y/N)')
+    if x == 'Y' or x == 'y':
+      with open(filep[:len(filep)-4] + 'output_' + str(n) + '.txt', 'w') as op:
+        op.write(txt)
+>>>>>>> master
 
   # forward seq_length characters through the net and fetch gradient
   loss, dWxh, dWhh, dWhy, dbh, dby, hprev = lossFun(inputs, targets, hprev)
