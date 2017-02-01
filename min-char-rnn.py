@@ -68,6 +68,7 @@ def sample(h, seed_ix, n):
   x = np.zeros((vocab_size, 1))
   x[seed_ix] = 1
   ixes = []
+  nkey = char_to_ix['\n']
   for t in xrange(n):
     for i in xrange(n):
       h = np.tanh(np.dot(Wxh, x) + np.dot(Whh, h) + bh)
@@ -77,7 +78,7 @@ def sample(h, seed_ix, n):
       x = np.zeros((vocab_size, 1))
       x[ix] = 1
       ixes.append(ix)
-    ixes.append('\n')
+    ixes.append(nkey)
   return ixes
 
 n, p = 0, 0
