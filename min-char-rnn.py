@@ -5,7 +5,7 @@ BSD License
 import numpy as np
 
 # data I/O
-data = open('input.txt', 'r').read() # should be simple plain text file
+data = open("fractaldata.txt", 'r').read() # should be simple plain text file
 chars = list(set(data))
 data_size, vocab_size = len(data), len(chars)
 print 'data has %d characters, %d unique.' % (data_size, vocab_size)
@@ -97,7 +97,11 @@ while True:
   if n % 100 == 0:
     sample_ix = sample(hprev, inputs[0], 200)
     txt = ''.join(ix_to_char[ix] for ix in sample_ix)
+    printfile = open('iter.txt','w')
+    printfile.write(str('----\n %s \n----')) % (txt, )
     print '----\n %s \n----' % (txt, )
+    printfile.close()
+    
 
   # forward seq_length characters through the net and fetch gradient
   loss, dWxh, dWhh, dWhy, dbh, dby, hprev = lossFun(inputs, targets, hprev)
