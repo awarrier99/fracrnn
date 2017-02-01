@@ -3,7 +3,7 @@ import matplotlib.cm as cm
 import numpy as np
 from PIL import Image
 
-im = Image.open('/Users/Cory/Downloads/black_and_white_fractal_2_by_mysticrainbowstock.jpg')
+im = Image.open('fractal1.jpg')
 im_grey = im.convert('L') #convert the image to greyscale
 im_array = np.array(im_grey)
 print(im_array)
