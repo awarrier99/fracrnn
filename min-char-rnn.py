@@ -10,14 +10,13 @@ filep = sys.argv[1]
 data = open(filep, 'r').read() # should be simple plain text file
 print 'Reading from file ' + filep + '...'
 chars = list(set(data))
-print chars
 data_size, vocab_size = len(data), len(chars)
 print 'data has %d characters, %d unique.' % (data_size, vocab_size)
 char_to_ix = { ch:i for i,ch in enumerate(chars) }
 ix_to_char = { i:ch for i,ch in enumerate(chars) }
 
 # hyperparameters
-hidden_size = 100 # size of hidden layer of neurons
+hidden_size = 512 # size of hidden layer of neurons
 seq_length = 25 # number of steps to unroll the RNN for
 learning_rate = 1e-1
 
@@ -102,10 +101,10 @@ while True:
     sample_ix = sample(hprev, inputs[0], 256)
     txt = ''.join(ix_to_char[ix] for ix in sample_ix)
     print '----\n %s \n----' % (txt, )
-    x = raw_input('Save to file? (Y/N)')
-    if x == 'Y' or x == 'y':
-      with open(filep[:len(filep)-4] + 'output_' + str(n) + '.txt', 'w') as op:
-        op.write(txt)
+    #x = raw_input('Save to file? (Y/N)')
+    #if x == 'Y' or x == 'y':
+    #  with open(filep[:len(filep)-4] + 'output_' + str(n) + '.txt', 'w') as op:
+    #    op.write(txt)
 
   # forward seq_length characters through the net and fetch gradient
   loss, dWxh, dWhh, dWhy, dbh, dby, hprev = lossFun(inputs, targets, hprev)
