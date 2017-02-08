@@ -5,4 +5,4 @@ if [ $2 == 'true' ]
 fi
 echo "Sampling complete"
 python3 arrangedata.py
-python3 texttoimage.py fractaloutput.txt $1
+python3 texttoimage.py fractaloutput.txt $1 gray
